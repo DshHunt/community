@@ -1,0 +1,46 @@
+name: False-positive appeal
+description: Report a project incorrectly identified as a plugin
+title: "[False positive]: "
+labels:
+  - false-positive
+body:
+  - type: input
+    id: repository-url
+    attributes:
+      label: Repository URL
+      placeholder: https://github.com/owner/repository
+    validations:
+      required: true
+  - type: dropdown
+    id: false-positive-type
+    attributes:
+      label: False-positive Type
+      options:
+        - Not a plugin
+        - Wrong project or repository
+        - Fork or mirror counted separately
+        - Example, template, or archived project
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: actual-project-type
+    attributes:
+      label: Actual Project Type
+      description: Describe what the project actually is.
+    validations:
+      required: true
+  - type: textarea
+    id: exclusion-reason
+    attributes:
+      label: Exclusion Reason
+      description: Explain why the project should be excluded from plugin results.
+    validations:
+      required: true
+  - type: textarea
+    id: supporting-evidence
+    attributes:
+      label: Supporting Evidence
+      description: Link to public, primary evidence supporting the appeal.
+    validations:
+      required: true

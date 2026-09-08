@@ -1,0 +1,41 @@
+name: Methodology feedback
+description: Discuss a DSH Hunt analysis rule or methodology decision
+title: "[Methodology]: "
+labels:
+  - methodology
+body:
+  - type: input
+    id: rule-name
+    attributes:
+      label: Rule Name
+      description: Name the methodology rule or analysis behavior being discussed.
+    validations:
+      required: true
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: Problem Description
+      description: Explain the problem and its practical impact.
+    validations:
+      required: true
+  - type: textarea
+    id: counterexample
+    attributes:
+      label: Counterexample
+      description: Provide a concrete example that the current rule handles incorrectly.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-behavior
+    attributes:
+      label: Proposed Behavior
+      description: Describe the behavior you think the rule should produce.
+    validations:
+      required: true
+  - type: textarea
+    id: public-evidence
+    attributes:
+      label: Public Evidence
+      description: Link to public, verifiable evidence supporting the proposal.
+    validations:
+      required: true

@@ -1,0 +1,88 @@
+name: Plugin submission
+description: Submit a plugin for evidence review
+title: "[Plugin submission]: "
+labels:
+  - plugin-submission
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for submitting a plugin. Provide public, verifiable information only. Do not include secrets or private source code.
+  - type: input
+    id: repository-url
+    attributes:
+      label: Repository URL
+      description: Link to the public source repository.
+      placeholder: https://github.com/owner/repository
+    validations:
+      required: true
+  - type: input
+    id: npm-package
+    attributes:
+      label: npm Package
+      description: Provide the npm package name if one exists; otherwise enter "Not published".
+      placeholder: package-name or Not published
+    validations:
+      required: true
+  - type: input
+    id: install-command
+    attributes:
+      label: Install Command
+      description: Provide the documented installation command. Do not include credentials.
+      placeholder: npm install package-name
+    validations:
+      required: true
+  - type: input
+    id: fixed-commit-sha
+    attributes:
+      label: Fixed Commit SHA
+      description: Prefer a full commit SHA so reviewers can inspect an immutable revision.
+      placeholder: 40-character commit SHA
+  - type: dropdown
+    id: plugin-type
+    attributes:
+      label: Plugin Type
+      description: Select the closest public description of the plugin.
+      options:
+        - DSH plugin
+        - DSH-compatible integration
+        - Developer tool
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: maintainer-relationship
+    attributes:
+      label: Maintainer Relationship
+      description: State your relationship to the submitted project.
+      options:
+        - Maintainer or owner
+        - Contributor
+        - User or community member
+        - No relationship
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: License
+      description: Provide the SPDX license identifier or a link to the project's license file.
+      placeholder: MIT or https://github.com/owner/repository/blob/main/LICENSE
+    validations:
+      required: true
+  - type: textarea
+    id: supporting-evidence
+    attributes:
+      label: Supporting Evidence
+      description: Add links to public documentation or source lines that help verify the submission.
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I confirm that the submitted information is public and verifiable.
+          required: true
+        - label: I confirm that I have not submitted any secret or credential.
+          required: true
+        - label: I understand that inclusion does not constitute a security endorsement.
+          required: true

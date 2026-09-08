@@ -1,0 +1,59 @@
+name: Evidence correction
+description: Correct a published evidence record
+title: "[Evidence correction]: "
+labels:
+  - evidence-correction
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Corrections must be supported by original, publicly verifiable evidence. Do not include secrets or private source code.
+  - type: input
+    id: dsh-hunt-page-url
+    attributes:
+      label: DSH Hunt Page URL
+      placeholder: https://dshhunt.com/plugins/example
+    validations:
+      required: true
+  - type: input
+    id: incorrect-field
+    attributes:
+      label: Incorrect Field
+      description: Name the field that should be corrected.
+    validations:
+      required: true
+  - type: textarea
+    id: current-value
+    attributes:
+      label: Current Displayed Value
+      description: Copy only the value currently shown on DSH Hunt.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-value
+    attributes:
+      label: Proposed Value
+      description: State the replacement value and explain the correction briefly.
+    validations:
+      required: true
+  - type: textarea
+    id: original-source
+    attributes:
+      label: Original Source
+      description: Link directly to the public primary source supporting the correction.
+      placeholder: https://github.com/owner/repository/blob/commit/path/to/file
+    validations:
+      required: true
+  - type: input
+    id: fixed-commit
+    attributes:
+      label: Fixed Commit
+      description: Provide the full commit SHA for repository evidence whenever possible.
+      placeholder: 40-character commit SHA
+  - type: textarea
+    id: maintainer-identity
+    attributes:
+      label: Maintainer Identity Statement
+      description: State whether you are a maintainer, contributor, user, or unrelated reporter. Do not include private contact details.
+    validations:
+      required: true

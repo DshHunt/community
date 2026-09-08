@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: DSH Hunt website
+    url: https://dshhunt.com
+    about: Visit the official DSH Hunt website.
+  - name: DSH Hunt methodology
+    url: https://dshhunt.com/methodology
+    about: Read the published methodology before proposing a change.
+  - name: Security report (private)
+    url: https://github.com/DshHunt/community/security/advisories/new
+    about: Privately report a security issue through GitHub. Do not disclose secrets in a public Issue.
