@@ -15,7 +15,7 @@ Please also provide a fixed commit SHA whenever possible so that evidence can be
 
 ## Evidence corrections
 
-Corrections must identify the affected DSH Hunt page and field and provide the original, publicly verifiable source supporting the proposed value. A fixed commit SHA is preferred when the source is a repository.
+Corrections must identify the affected DSH Hunt page, package ID or evidence ID, and field, then provide the proposed value and the public source supporting it. For repository evidence, include the fixed commit SHA and file path so the claim can be checked at the same revision. Link to the source instead of pasting Patch contents or other large copyrighted material.
 
 Requests whose only basis is “please raise my score” are not accepted. Corrections are evaluated against evidence and published methodology, not a desired score.
 

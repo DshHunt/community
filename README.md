@@ -10,6 +10,12 @@ This is the public community repository for DSH Hunt. Use it for:
 
 Official website: <https://dshhunt.com>
 
+## What published structure evidence means
+
+A package record describes public repository structure at a fixed source commit. It may include the package and manifest path, declared metadata, Patch file links and order, source hashes, a limited YAML structure summary, and the collector's coverage. The public record does not rehost Patch contents.
+
+`observed` means the recorded source files were read and checked at that commit. It does not mean the package was installed, built, or run. DSH Hunt does not infer runtime compatibility or safety from these fields. `partial` means some declared structure was outside the collector's supported coverage; missing evidence must not be read as evidence that a field or file does not exist.
+
 ## Scope and limitations
 
 This repository does not contain DSH Hunt's closed-source product code, collection logic, or analysis rules.
