@@ -5,7 +5,7 @@ contact_links:
     about: Visit the official DSH Hunt website.
   - name: DSH Hunt methodology
     url: https://dshhunt.com/methodology
-    about: Read the published methodology before proposing a change.
+    about: Read the published methodology before using the separate methodology feedback form.
   - name: Security report (private)
     url: https://github.com/DshHunt/community/security/advisories/new
     about: Privately report a security issue through GitHub. Do not disclose secrets in a public Issue.
