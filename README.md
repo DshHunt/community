@@ -24,6 +24,10 @@ DSH Hunt uses static analysis to publish evidence. Static analysis is not a secu
 
 DSH Hunt is an independent community project. It is not affiliated with or endorsed by DeepSeek.
 
+## Security concerns
+
+No private vulnerability reporting route has been verified. Community Issues are public and must not contain vulnerability details, affected projects or files, reproduction steps, private source code, or secrets. If you only want to ask whether a private route is available, use the [public safe-reporting question form](https://github.com/DshHunt/community/issues/new?template=safe-reporting-route-request.yml) and include no details about the concern. The notice is public and does not itself report or privately deliver a vulnerability.
+
 ## Review outcomes
 
 `accepted` means a maintainer has reviewed a submission or correction and recorded the proposed scope. It does not mean the public site has changed; accepted evidence must still pass the release checks. `published` is used only after a release is live and the affected page has been checked. Maintainers update the Issue state after those steps.

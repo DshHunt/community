@@ -26,6 +26,7 @@ Requests whose only basis is “please raise my score” are not accepted. Corre
 
 ## Safe disclosure rules
 
+- No private security reporting route has been verified. Do not describe a vulnerability in a public Issue. The public safe-reporting question form is only for asking whether a private route is available; include no target, affected file, vulnerability details, or reproduction steps. The notice is public and does not deliver a report privately.
 - Do not submit API keys, tokens, passwords, private keys, cookies, or other secrets.
 - Do not submit source code from private repositories.
 - Do not paste a complete README or other copyrighted work unless you have authorization to publish it. Link to the original source and quote only the minimum evidence needed.
