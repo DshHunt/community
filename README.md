@@ -1,12 +1,20 @@
 # DSH Hunt Community
 
-This is the public community repository for DSH Hunt. Use it for:
+This is the public contribution repository for DSH Hunt. It stores reviewable,
+public plugin metadata and community feedback; it does not mirror the closed-source
+application or its private data. Use it for:
 
 - plugin submissions;
 - evidence corrections;
 - false-positive appeals;
 - methodology feedback; and
 - the [public roadmap](ROADMAP.md).
+
+Maintainers can add reviewed plugin records under `data/plugins/` by pull
+request. Contributors who do not use Git can start with the public Issue forms.
+Every record is reviewed, normalized, deduplicated, and checked by the DSH Hunt
+publication process before it can appear on the website. A merged contribution
+does not publish a listing automatically.
 
 Official website: <https://dshhunt.com>
 
@@ -34,7 +42,9 @@ No private vulnerability reporting route has been verified. Community Issues are
 
 ## Contributing
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md), then choose the matching Issue form for a plugin submission, evidence correction, false-positive appeal, or methodology proposal.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) for the pull request and Issue paths.
+The public fields and import boundary are described in
+[docs/data-boundary.md](docs/data-boundary.md).
 
 ## License
 
