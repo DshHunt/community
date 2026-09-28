@@ -19,7 +19,7 @@ body:
     id: incorrect-field
     attributes:
       label: Incorrect Field
-      description: Name the field that should be corrected.
+      description: Name the exact public field that should be corrected. If the page shows a stable field key such as licenses.package.value, include it here.
     validations:
       required: true
   - type: textarea
