@@ -6,9 +6,27 @@ const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 export async function validateCommunityRecords(root = repositoryRoot) {
   const schemaPath = join(root, "schemas", "plugin-record.schema.json");
+  const dataRoot = join(root, "data");
   const dataPath = join(root, "data", "plugins");
+  if (!(await isRegularFile(schemaPath))) {
+    return {
+      recordsChecked: 0,
+      errors: ["schemas/plugin-record.schema.json: expected a regular file"],
+    };
+  }
+  if (
+    !(await isRegularDirectory(dataRoot)) ||
+    !(await isRegularDirectory(dataPath))
+  ) {
+    return {
+      recordsChecked: 0,
+      errors: ["data/plugins: expected a regular directory"],
+    };
+  }
   const schema = JSON.parse(await readFile(schemaPath, "utf8"));
-  const names = (await readdir(dataPath)).filter((name) => name.endsWith(".json")).sort();
+  const names = (await readdir(dataPath))
+    .filter((name) => name.endsWith(".json"))
+    .sort();
   const errors = [];
   const records = [];
 
@@ -68,28 +86,52 @@ export function validatePluginRecord(record, schema, fileName) {
   if (!isRecord(record)) return errors;
 
   if (typeof record.slug === "string" && fileName !== `${record.slug}.json`) {
-    errors.push(`${fileName}: $.slug must match the filename (${record.slug}.json)`);
+    errors.push(
+      `${fileName}: $.slug must match the filename (${record.slug}.json)`,
+    );
   }
 
   if (typeof record.name === "string" && record.name.trim() !== record.name) {
-    errors.push(`${fileName}: $.name must not have leading or trailing whitespace`);
+    errors.push(
+      `${fileName}: $.name must not have leading or trailing whitespace`,
+    );
   }
-  if (typeof record.description === "string" && record.description.trim() !== record.description) {
-    errors.push(`${fileName}: $.description must not have leading or trailing whitespace`);
+  if (
+    typeof record.description === "string" &&
+    record.description.trim() !== record.description
+  ) {
+    errors.push(
+      `${fileName}: $.description must not have leading or trailing whitespace`,
+    );
   }
-  if (typeof record.submissionNotes === "string" && record.submissionNotes.trim() !== record.submissionNotes) {
-    errors.push(`${fileName}: $.submissionNotes must not have leading or trailing whitespace`);
+  if (
+    typeof record.submissionNotes === "string" &&
+    record.submissionNotes.trim() !== record.submissionNotes
+  ) {
+    errors.push(
+      `${fileName}: $.submissionNotes must not have leading or trailing whitespace`,
+    );
   }
 
   const expectedId = githubRepositoryId(record.repositoryUrl);
   if (expectedId && typeof record.id === "string" && record.id !== expectedId) {
     errors.push(`${fileName}: $.id must match repositoryUrl (${expectedId})`);
   }
-  if (typeof record.repositoryUrl === "string" && !isPublicHttpsUrl(record.repositoryUrl)) {
-    errors.push(`${fileName}: $.repositoryUrl must be an HTTPS GitHub repository URL without credentials, query, or fragment`);
+  if (
+    typeof record.repositoryUrl === "string" &&
+    !isPublicHttpsUrl(record.repositoryUrl)
+  ) {
+    errors.push(
+      `${fileName}: $.repositoryUrl must be an HTTPS GitHub repository URL without credentials, query, or fragment`,
+    );
   }
-  if (typeof record.homepageUrl === "string" && !isPublicHttpsUrl(record.homepageUrl)) {
-    errors.push(`${fileName}: $.homepageUrl must be an absolute HTTPS URL without credentials`);
+  if (
+    typeof record.homepageUrl === "string" &&
+    !isPublicHttpsUrl(record.homepageUrl)
+  ) {
+    errors.push(
+      `${fileName}: $.homepageUrl must be an absolute HTTPS URL without credentials`,
+    );
   }
 
   return errors;
@@ -100,8 +142,13 @@ function validateAgainstSchema(value, schema, path = "$") {
   if ("const" in schema && !Object.is(value, schema.const)) {
     errors.push(`${path}: must equal ${JSON.stringify(schema.const)}`);
   }
-  if (schema.enum && !schema.enum.some((allowed) => Object.is(value, allowed))) {
-    errors.push(`${path}: must be one of ${schema.enum.map((item) => JSON.stringify(item)).join(", ")}`);
+  if (
+    schema.enum &&
+    !schema.enum.some((allowed) => Object.is(value, allowed))
+  ) {
+    errors.push(
+      `${path}: must be one of ${schema.enum.map((item) => JSON.stringify(item)).join(", ")}`,
+    );
   }
 
   if (schema.type === "object") {
@@ -110,15 +157,19 @@ function validateAgainstSchema(value, schema, path = "$") {
       return errors;
     }
     for (const required of schema.required ?? []) {
-      if (!Object.hasOwn(value, required)) errors.push(`${path}.${required}: is required`);
+      if (!Object.hasOwn(value, required))
+        errors.push(`${path}.${required}: is required`);
     }
     for (const [key, child] of Object.entries(value)) {
       const childSchema = schema.properties?.[key];
       if (!childSchema) {
-        if (schema.additionalProperties === false) errors.push(`${path}.${key}: additional property is not allowed`);
+        if (schema.additionalProperties === false)
+          errors.push(`${path}.${key}: additional property is not allowed`);
         continue;
       }
-      errors.push(...validateAgainstSchema(child, childSchema, `${path}.${key}`));
+      errors.push(
+        ...validateAgainstSchema(child, childSchema, `${path}.${key}`),
+      );
     }
     return errors;
   }
@@ -134,11 +185,18 @@ function validateAgainstSchema(value, schema, path = "$") {
     if (schema.maxItems !== undefined && value.length > schema.maxItems) {
       errors.push(`${path}: must contain at most ${schema.maxItems} item(s)`);
     }
-    if (schema.uniqueItems && new Set(value.map((item) => JSON.stringify(item))).size !== value.length) {
+    if (
+      schema.uniqueItems &&
+      new Set(value.map((item) => JSON.stringify(item))).size !== value.length
+    ) {
       errors.push(`${path}: items must be unique`);
     }
     if (schema.items) {
-      value.forEach((item, index) => errors.push(...validateAgainstSchema(item, schema.items, `${path}[${index}]`)));
+      value.forEach((item, index) =>
+        errors.push(
+          ...validateAgainstSchema(item, schema.items, `${path}[${index}]`),
+        ),
+      );
     }
     return errors;
   }
@@ -149,10 +207,14 @@ function validateAgainstSchema(value, schema, path = "$") {
       return errors;
     }
     const length = [...value].length;
-    if (schema.minLength !== undefined && length < schema.minLength) errors.push(`${path}: must not be empty`);
-    if (schema.maxLength !== undefined && length > schema.maxLength) errors.push(`${path}: exceeds ${schema.maxLength} characters`);
-    if (schema.pattern && !new RegExp(schema.pattern, "u").test(value)) errors.push(`${path}: has an invalid format`);
-    if (schema.format === "uri" && !isAbsoluteUrl(value)) errors.push(`${path}: must be an absolute URL`);
+    if (schema.minLength !== undefined && length < schema.minLength)
+      errors.push(`${path}: must not be empty`);
+    if (schema.maxLength !== undefined && length > schema.maxLength)
+      errors.push(`${path}: exceeds ${schema.maxLength} characters`);
+    if (schema.pattern && !new RegExp(schema.pattern, "u").test(value))
+      errors.push(`${path}: has an invalid format`);
+    if (schema.format === "uri" && !isAbsoluteUrl(value))
+      errors.push(`${path}: must be an absolute URL`);
   } else if (schema.type === "integer" && !Number.isInteger(value)) {
     errors.push(`${path}: must be an integer`);
   }
@@ -162,6 +224,22 @@ function validateAgainstSchema(value, schema, path = "$") {
 
 function isRecord(value) {
   return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+async function isRegularFile(path) {
+  try {
+    return (await lstat(path)).isFile();
+  } catch {
+    return false;
+  }
+}
+
+async function isRegularDirectory(path) {
+  try {
+    return (await lstat(path)).isDirectory();
+  } catch {
+    return false;
+  }
 }
 
 function isAbsoluteUrl(value) {
@@ -193,12 +271,17 @@ function githubRepositoryId(value) {
       url.password ||
       url.search ||
       url.hash
-    ) return null;
+    )
+      return null;
     const segments = url.pathname.split("/").filter(Boolean);
     if (segments.length !== 2) return null;
     const owner = segments[0];
     const repository = segments[1].replace(/\.git$/iu, "");
-    if (!/^[a-z0-9](?:[a-z0-9-]{0,38})$/iu.test(owner) || !/^[a-z0-9](?:[a-z0-9._-]{0,99})$/iu.test(repository)) return null;
+    if (
+      !/^[a-z0-9](?:[a-z0-9-]{0,38})$/iu.test(owner) ||
+      !/^[a-z0-9](?:[a-z0-9._-]{0,99})$/iu.test(repository)
+    )
+      return null;
     return `github:${owner.toLowerCase()}/${repository.toLowerCase()}`;
   } catch {
     return null;
@@ -207,19 +290,27 @@ function githubRepositoryId(value) {
 
 async function main(args) {
   const options = parseArguments(args);
-  const { recordsChecked, errors } = await validateCommunityRecords(options.root);
+  const { recordsChecked, errors } = await validateCommunityRecords(
+    options.root,
+  );
   if (options.json) {
-    process.stdout.write(`${JSON.stringify({ ok: errors.length === 0, recordsChecked, errors }, null, 2)}\n`);
+    process.stdout.write(
+      `${JSON.stringify({ ok: errors.length === 0, recordsChecked, errors }, null, 2)}\n`,
+    );
     if (errors.length > 0) process.exitCode = 1;
     return;
   }
   if (errors.length > 0) {
-    process.stderr.write(`Community data validation failed (${recordsChecked} file(s) checked):\n`);
+    process.stderr.write(
+      `Community data validation failed (${recordsChecked} file(s) checked):\n`,
+    );
     for (const error of errors) process.stderr.write(`- ${error}\n`);
     process.exitCode = 1;
     return;
   }
-  process.stdout.write(`Community data validation passed (${recordsChecked} file(s) checked).\n`);
+  process.stdout.write(
+    `Community data validation passed (${recordsChecked} file(s) checked).\n`,
+  );
 }
 
 function parseArguments(args) {
@@ -232,15 +323,22 @@ function parseArguments(args) {
     } else if (args[index] === "--json") {
       json = true;
     } else {
-      throw new Error(`unknown or incomplete argument: ${args[index] ?? "<missing>"}`);
+      throw new Error(
+        `unknown or incomplete argument: ${args[index] ?? "<missing>"}`,
+      );
     }
   }
   return { root, json };
 }
 
-if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.meta.url) {
+if (
+  process.argv[1] &&
+  pathToFileURL(resolve(process.argv[1])).href === import.meta.url
+) {
   void main(process.argv.slice(2)).catch((error) => {
-    process.stderr.write(`Community data validation could not run: ${error instanceof Error ? error.message : "unexpected error"}\n`);
+    process.stderr.write(
+      `Community data validation could not run: ${error instanceof Error ? error.message : "unexpected error"}\n`,
+    );
     process.exitCode = 1;
   });
 }
