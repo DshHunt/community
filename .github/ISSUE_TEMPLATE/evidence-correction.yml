@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Corrections must be supported by original, publicly verifiable evidence. Do not include secrets or private source code.
+        This GitHub Issue will be public. Corrections must be supported by original, publicly verifiable evidence. Do not include secrets, private source code, or sensitive vulnerability details.
   - type: input
     id: dsh-hunt-page-url
     attributes:
@@ -16,10 +16,22 @@ body:
     validations:
       required: true
   - type: input
+    id: report-id
+    attributes:
+      label: Report ID
+      description: Stable identity formatted as packageId:evidenceId:commitSha when supplied by a DSH Hunt page.
+      placeholder: packageId:evidenceId:commitSha
+  - type: input
+    id: finding-id
+    attributes:
+      label: Finding ID / Field Key
+      description: Use the stable public field key supplied by the page when available; otherwise name the field below.
+      placeholder: licenses.package.value
+  - type: input
     id: incorrect-field
     attributes:
       label: Incorrect Field
-      description: Name the field that should be corrected.
+      description: Name the exact public field that should be corrected. If the page shows a stable field key such as licenses.package.value, include it here.
     validations:
       required: true
   - type: textarea

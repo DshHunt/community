@@ -1,0 +1,25 @@
+name: Ask about a safe reporting route
+description: Public, non-sensitive request to ask whether a private reporting route is available
+title: "[Safe reporting route question]: "
+labels:
+  - safe-reporting-route-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This GitHub Issue will be public; this is not a private security reporting channel. No private route has been verified. Use this form only to ask whether a safe route is available. Do not name the affected project, package, file, vulnerability, or include reproduction details, private source code, secrets, or credentials.
+  - type: textarea
+    id: notice
+    attributes:
+      label: Non-sensitive notice only
+      description: Write only that you would like guidance about a safe reporting route. Do not describe the concern.
+      placeholder: I have a concern and would like to ask whether a private reporting route is available.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Required confirmation
+      options:
+        - label: I understand this Issue is public and confirm that I have not included any security details or secrets.
+          required: true

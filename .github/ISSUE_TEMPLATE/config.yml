@@ -5,7 +5,7 @@ contact_links:
     about: Visit the official DSH Hunt website.
   - name: DSH Hunt methodology
     url: https://dshhunt.com/methodology
-    about: Read the published methodology before proposing a change.
-  - name: Security report (private)
-    url: https://github.com/DshHunt/community/security/advisories/new
-    about: Privately report a security issue through GitHub. Do not disclose secrets in a public Issue.
+    about: Read the published methodology before using the separate methodology feedback form.
+  - name: Ask about a safe reporting route (public, no details)
+    url: https://github.com/DshHunt/community/issues/new?template=safe-reporting-route-request.yml
+    about: This creates a public Issue only to ask whether a private route is available. No private route is currently verified; do not include security details or secrets.

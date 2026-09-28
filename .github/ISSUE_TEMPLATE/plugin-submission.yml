@@ -7,13 +7,21 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for submitting a plugin. Provide public, verifiable information only. Do not include secrets or private source code.
+        This GitHub Issue will be public. Provide public, verifiable information only. Do not include secrets, private source code, or sensitive vulnerability details.
   - type: input
     id: repository-url
     attributes:
       label: Repository URL
       description: Link to the public source repository.
       placeholder: https://github.com/owner/repository
+    validations:
+      required: true
+  - type: input
+    id: bundle-path
+    attributes:
+      label: Bundle Path
+      description: Use the repository-relative path for this package or bundle. Enter "." for the repository root.
+      placeholder: . or packages/example
     validations:
       required: true
   - type: input
@@ -28,15 +36,15 @@ body:
     id: install-command
     attributes:
       label: Install Command
-      description: Provide the documented installation command. Do not include credentials.
-      placeholder: npm install package-name
+      description: Provide the documented installation command, or enter "Not found". This is reference information only; maintainers will not execute it. Do not include credentials.
+      placeholder: npm install package-name or Not found
     validations:
       required: true
   - type: input
     id: fixed-commit-sha
     attributes:
       label: Fixed Commit SHA
-      description: Prefer a full commit SHA so reviewers can inspect an immutable revision.
+      description: A full 40-character SHA is needed before a submission can be accepted. If you do not know it yet, leave this blank; maintainers will request it before review is accepted.
       placeholder: 40-character commit SHA
   - type: dropdown
     id: plugin-type
@@ -74,7 +82,7 @@ body:
     id: supporting-evidence
     attributes:
       label: Supporting Evidence
-      description: Add links to public documentation or source lines that help verify the submission.
+      description: Link the original public declaration or documentation at the fixed source revision when possible. A source URL is required before a correction or submission can be accepted.
   - type: checkboxes
     id: confirmations
     attributes:

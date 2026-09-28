@@ -4,6 +4,10 @@ title: "[Methodology]: "
 labels:
   - methodology
 body:
+  - type: markdown
+    attributes:
+      value: |
+        This GitHub Issue will be public. Provide public, verifiable evidence only. Do not include secrets, private source code, or sensitive vulnerability details.
   - type: input
     id: rule-name
     attributes:

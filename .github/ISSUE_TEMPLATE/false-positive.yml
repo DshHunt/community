@@ -4,6 +4,10 @@ title: "[False positive]: "
 labels:
   - false-positive
 body:
+  - type: markdown
+    attributes:
+      value: |
+        This GitHub Issue will be public. Provide public, verifiable evidence only. Do not include secrets, private source code, or sensitive vulnerability details.
   - type: input
     id: repository-url
     attributes:
@@ -11,6 +15,12 @@ body:
       placeholder: https://github.com/owner/repository
     validations:
       required: true
+  - type: input
+    id: fixed-commit-sha
+    attributes:
+      label: Fixed Commit SHA
+      description: Include the full SHA shown on the DSH Hunt report when disputing that report. A newer source revision is a separate update and does not change what the pinned report observed.
+      placeholder: 40-character commit SHA
   - type: dropdown
     id: false-positive-type
     attributes:
@@ -41,6 +51,6 @@ body:
     id: supporting-evidence
     attributes:
       label: Supporting Evidence
-      description: Link to public, primary evidence supporting the appeal.
+      description: Link to public, primary evidence at the pinned revision supporting the appeal. Do not substitute a later revision for evidence about the published report.
     validations:
       required: true
