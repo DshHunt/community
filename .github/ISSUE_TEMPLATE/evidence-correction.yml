@@ -16,6 +16,18 @@ body:
     validations:
       required: true
   - type: input
+    id: report-id
+    attributes:
+      label: Report ID
+      description: Stable identity formatted as packageId:evidenceId:commitSha when supplied by a DSH Hunt page.
+      placeholder: packageId:evidenceId:commitSha
+  - type: input
+    id: finding-id
+    attributes:
+      label: Finding ID / Field Key
+      description: Use the stable public field key supplied by the page when available; otherwise name the field below.
+      placeholder: licenses.package.value
+  - type: input
     id: incorrect-field
     attributes:
       label: Incorrect Field
