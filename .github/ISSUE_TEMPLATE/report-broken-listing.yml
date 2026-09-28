@@ -1,0 +1,62 @@
+name: Report a broken listing
+description: Report a dead source link or other public listing problem
+title: "[Broken listing]: "
+labels:
+  - evidence-correction
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This GitHub Issue will be public. Provide public, verifiable information only. Do not include secrets, private source code, or sensitive vulnerability details.
+  - type: input
+    id: dsh-hunt-page-url
+    attributes:
+      label: DSH Hunt Listing URL
+      description: Link to the listing with the reported problem.
+      placeholder: https://dshhunt.com/plugins/owner/repository
+    validations:
+      required: true
+  - type: input
+    id: repository-url
+    attributes:
+      label: Source Repository URL
+      description: Link to the public source repository shown on the listing.
+    validations:
+      required: true
+  - type: dropdown
+    id: problem-type
+    attributes:
+      label: Problem Type
+      options:
+        - Source repository is unavailable
+        - Repository moved or renamed
+        - Homepage or documentation link is broken
+        - Listing points to an unrelated project
+        - Other public metadata problem
+    validations:
+      required: true
+  - type: input
+    id: observed-date
+    attributes:
+      label: Date Observed
+      description: Optional date in YYYY-MM-DD format.
+      placeholder: YYYY-MM-DD
+  - type: input
+    id: evidence-url
+    attributes:
+      label: Public Evidence URL
+      description: Optional link to a public redirect, replacement repository, or other evidence.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Context
+      description: Optional concise context. Do not include vulnerability details or personal information.
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I confirm that this report contains only public information.
+          required: true
+        - label: I confirm that I have not included any secret or credential.
+          required: true

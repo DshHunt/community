@@ -1,6 +1,26 @@
 # Contributing to DSH Hunt Community
 
-Thank you for helping improve the public evidence and methodology maintained by DSH Hunt. Submit the matching Issue form and include only information you are authorized to share.
+Thank you for helping improve the public evidence and methodology maintained by DSH Hunt. Use a pull request or the matching public Issue form, and include only information you are authorized to share.
+
+## Choose a contribution path
+
+- To add or update a public plugin record, open a pull request that changes one
+  JSON file under `data/plugins/`. Use the versioned schema and examples in
+  `schemas/` and `examples/`.
+- If you do not use Git, choose the matching public Issue form:
+  - [Submit a plugin](https://github.com/DshHunt/community/issues/new?template=plugin-submission.yml)
+    with its public name, description, source URL, and category suggestion.
+  - [Update plugin metadata](https://github.com/DshHunt/community/issues/new?template=update-plugin-metadata.yml)
+    with the listing, proposed values, and supporting source.
+  - [Report a broken listing](https://github.com/DshHunt/community/issues/new?template=report-broken-listing.yml)
+    with the listing URL and public evidence.
+  A maintainer can turn a reviewed request into a record change.
+- Use the evidence-correction, false-positive, or methodology form for changes
+  to published evidence or methodology, rather than editing plugin metadata.
+
+All Issues and pull requests are public. Do not include secrets, private source
+code, or information you are not authorized to publish. See the
+[data boundary](docs/data-boundary.md) for the fields this repository accepts.
 
 ## Plugin submissions
 
@@ -33,3 +53,17 @@ Requests whose only basis is “please raise my score” are not accepted. Corre
 - Do not submit personal information that is not necessary for verification.
 
 Static analysis is not a security audit, and acceptance into DSH Hunt is not a security endorsement.
+
+## Plugin record pull request checklist
+
+- [ ] The file is named `data/plugins/<slug>.json` and matches the schema.
+- [ ] The repository URL is the public source for this plugin and uses HTTPS.
+- [ ] The record does not already exist under another ID or slug.
+- [ ] Name, description, category, and tags are objective and supported by public sources.
+- [ ] No score, finding, analysis result, or internal review field is supplied.
+- [ ] No credentials, private data, or unnecessary personal information is included.
+
+Maintainers may normalize text or categories and verify source details. A
+community record is a proposal for review: the main site can apply its own
+normalization, deduplication, eligibility, and static-analysis steps before
+publishing anything.

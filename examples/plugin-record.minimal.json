@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "github:example/markdown-helper",
+  "slug": "example-markdown-helper",
+  "name": "Example Markdown Helper",
+  "description": "A synthetic example of a plugin record with the required public fields.",
+  "repositoryUrl": "https://github.com/example/markdown-helper",
+  "category": "utilities"
+}
