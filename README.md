@@ -6,7 +6,7 @@ This is the public community repository for DSH Hunt. Use it for:
 - evidence corrections;
 - false-positive appeals;
 - methodology feedback; and
-- the public roadmap.
+- the [public roadmap](ROADMAP.md).
 
 Official website: <https://dshhunt.com>
 
