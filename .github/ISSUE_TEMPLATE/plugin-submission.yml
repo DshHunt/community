@@ -36,8 +36,8 @@ body:
     id: install-command
     attributes:
       label: Install Command
-      description: Provide the documented installation command. Do not include credentials.
-      placeholder: npm install package-name
+      description: Provide the documented installation command, or enter "Not found". This is reference information only; maintainers will not execute it. Do not include credentials.
+      placeholder: npm install package-name or Not found
     validations:
       required: true
   - type: input
