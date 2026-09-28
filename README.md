@@ -24,6 +24,10 @@ DSH Hunt uses static analysis to publish evidence. Static analysis is not a secu
 
 DSH Hunt is an independent community project. It is not affiliated with or endorsed by DeepSeek.
 
+## Review outcomes
+
+`accepted` means a maintainer has reviewed a submission or correction and recorded the proposed scope. It does not mean the public site has changed; accepted evidence must still pass the release checks. `published` is used only after a release is live and the affected page has been checked. Maintainers update the Issue state after those steps.
+
 ## Contributing
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md), then choose the matching Issue form for a plugin submission, evidence correction, false-positive appeal, or methodology proposal.
