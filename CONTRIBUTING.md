@@ -1,14 +1,20 @@
 # Contributing to DSH Hunt Community
 
-Thank you for helping improve the public evidence and methodology maintained by DSH Hunt. Submit the matching Issue form and include only information you are authorized to share.
+Thank you for helping improve the public evidence and methodology maintained by DSH Hunt. Use a pull request or the matching public Issue form, and include only information you are authorized to share.
 
 ## Choose a contribution path
 
 - To add or update a public plugin record, open a pull request that changes one
   JSON file under `data/plugins/`. Use the versioned schema and examples in
   `schemas/` and `examples/`.
-- If you do not use Git, open the matching public Issue form. A maintainer can
-  turn a reviewed request into a record change.
+- If you do not use Git, choose the matching public Issue form:
+  - [Submit a plugin](https://github.com/DshHunt/community/issues/new?template=plugin-submission.yml)
+    with its public name, description, source URL, and category suggestion.
+  - [Update plugin metadata](https://github.com/DshHunt/community/issues/new?template=update-plugin-metadata.yml)
+    with the listing, proposed values, and supporting source.
+  - [Report a broken listing](https://github.com/DshHunt/community/issues/new?template=report-broken-listing.yml)
+    with the listing URL and public evidence.
+  A maintainer can turn a reviewed request into a record change.
 - Use the evidence-correction, false-positive, or methodology form for changes
   to published evidence or methodology, rather than editing plugin metadata.
 

@@ -9,11 +9,45 @@ body:
       value: |
         This GitHub Issue will be public. Provide public, verifiable information only. Do not include secrets, private source code, or sensitive vulnerability details.
   - type: input
+    id: plugin-name
+    attributes:
+      label: Plugin Name
+      description: Use the public project or plugin name.
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Give a short, factual description supported by public project information. Do not include ratings or security claims.
+    validations:
+      required: true
+  - type: input
     id: repository-url
     attributes:
       label: Repository URL
       description: Link to the public source repository.
       placeholder: https://github.com/owner/repository
+    validations:
+      required: true
+  - type: input
+    id: homepage-url
+    attributes:
+      label: Homepage
+      description: Optional public project homepage. Use an HTTPS URL.
+  - type: dropdown
+    id: category-suggestion
+    attributes:
+      label: Category Suggestion
+      description: Choose the closest category, or select Not sure.
+      options:
+        - ai-assistant
+        - automation
+        - developer-tools
+        - interface
+        - productivity
+        - utilities
+        - Not sure
     validations:
       required: true
   - type: input
@@ -83,6 +117,11 @@ body:
     attributes:
       label: Supporting Evidence
       description: Link the original public declaration or documentation at the fixed source revision when possible. A source URL is required before a correction or submission can be accepted.
+  - type: textarea
+    id: public-notes
+    attributes:
+      label: Additional Public Notes
+      description: Optional context for review. Do not include private or sensitive information.
   - type: checkboxes
     id: confirmations
     attributes:

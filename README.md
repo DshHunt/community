@@ -42,7 +42,10 @@ No private vulnerability reporting route has been verified. Community Issues are
 
 ## Contributing
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md) for the pull request and Issue paths.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) for the pull request and Issue paths:
+the [plugin submission form](https://github.com/DshHunt/community/issues/new?template=plugin-submission.yml),
+[metadata update form](https://github.com/DshHunt/community/issues/new?template=update-plugin-metadata.yml),
+and [broken listing report](https://github.com/DshHunt/community/issues/new?template=report-broken-listing.yml).
 The public fields and import boundary are described in
 [docs/data-boundary.md](docs/data-boundary.md).
 

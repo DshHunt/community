@@ -1,0 +1,55 @@
+name: Update plugin metadata
+description: Suggest a public metadata correction for a DSH Hunt listing
+title: "[Metadata update]: "
+labels:
+  - plugin-submission
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This GitHub Issue will be public. Provide public, verifiable information only. Do not include secrets, private source code, or sensitive vulnerability details.
+  - type: input
+    id: dsh-hunt-page-url
+    attributes:
+      label: DSH Hunt Listing URL
+      description: Link to the current listing.
+      placeholder: https://dshhunt.com/plugins/owner/repository
+    validations:
+      required: true
+  - type: input
+    id: repository-url
+    attributes:
+      label: Public Source Repository
+      description: Link to the public source repository.
+    validations:
+      required: true
+  - type: textarea
+    id: fields-to-update
+    attributes:
+      label: Fields to Update
+      description: Name each field and its current value.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-values
+    attributes:
+      label: Proposed Values
+      description: Provide the replacement public metadata values.
+    validations:
+      required: true
+  - type: input
+    id: supporting-source
+    attributes:
+      label: Public Evidence URL
+      description: Link to a primary public source supporting the change.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I confirm that the proposed information is public and verifiable.
+          required: true
+        - label: I confirm that I have not included any secret or credential.
+          required: true
