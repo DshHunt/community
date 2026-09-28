@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for submitting a plugin. Provide public, verifiable information only. Do not include secrets or private source code.
+        This GitHub Issue will be public. Provide public, verifiable information only. Do not include secrets, private source code, or sensitive vulnerability details.
   - type: input
     id: repository-url
     attributes:
