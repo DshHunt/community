@@ -44,7 +44,7 @@ body:
     id: fixed-commit-sha
     attributes:
       label: Fixed Commit SHA
-      description: Prefer a full commit SHA so reviewers can inspect an immutable revision.
+      description: A full 40-character SHA is needed before a submission can be accepted. If you do not know it yet, leave this blank; maintainers will request it before review is accepted.
       placeholder: 40-character commit SHA
   - type: dropdown
     id: plugin-type
@@ -82,7 +82,7 @@ body:
     id: supporting-evidence
     attributes:
       label: Supporting Evidence
-      description: Add links to public documentation or source lines that help verify the submission.
+      description: Link the original public declaration or documentation at the fixed source revision when possible. A source URL is required before a correction or submission can be accepted.
   - type: checkboxes
     id: confirmations
     attributes:
