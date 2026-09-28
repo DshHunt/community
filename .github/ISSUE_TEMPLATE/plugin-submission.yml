@@ -17,6 +17,14 @@ body:
     validations:
       required: true
   - type: input
+    id: bundle-path
+    attributes:
+      label: Bundle Path
+      description: Use the repository-relative path for this package or bundle. Enter "." for the repository root.
+      placeholder: . or packages/example
+    validations:
+      required: true
+  - type: input
     id: npm-package
     attributes:
       label: npm Package
