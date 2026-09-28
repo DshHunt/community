@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/DshHunt/community/blob/main/schemas/plugin-record.schema.json",
+  "title": "DSH Hunt public plugin contribution",
+  "description": "Public descriptive metadata proposed for a DSH Hunt listing. This is not an analysis or publication record.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "slug",
+    "name",
+    "description",
+    "repositoryUrl",
+    "category"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1,
+      "description": "Version of this public contribution schema."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^github:[a-z0-9](?:[a-z0-9-]{0,38})/[a-z0-9](?:[a-z0-9._-]{0,99})$",
+      "description": "Lowercase stable identity derived from the GitHub owner and repository."
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 120,
+      "description": "Lowercase kebab-case filename identity; the file must be named <slug>.json."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "description": "Short factual description based on public project information."
+    },
+    "repositoryUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://github\\.com/[A-Za-z0-9-]+/[A-Za-z0-9_.-]+(?:\\.git)?/?$",
+      "description": "HTTPS URL to the public GitHub source repository root."
+    },
+    "homepageUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 2048,
+      "description": "Optional public project homepage; HTTPS only."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "ai-assistant",
+        "automation",
+        "developer-tools",
+        "interface",
+        "productivity",
+        "utilities"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "string",
+        "enum": [
+          "api",
+          "automation",
+          "backup",
+          "developer-tools",
+          "interface",
+          "model-access",
+          "notifications",
+          "productivity",
+          "prompting",
+          "research",
+          "theme",
+          "utility",
+          "workflow"
+        ]
+      }
+    },
+    "submissionNotes": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Optional public context for reviewers. Do not include private or sensitive information."
+    }
+  }
+}

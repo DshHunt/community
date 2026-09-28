@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "github:example/workflow-notifier",
+  "slug": "example-workflow-notifier",
+  "name": "Example Workflow Notifier",
+  "description": "A synthetic example showing optional public metadata for a proposed plugin listing.",
+  "repositoryUrl": "https://github.com/example/workflow-notifier",
+  "homepageUrl": "https://example.org/workflow-notifier",
+  "category": "automation",
+  "tags": [
+    "notifications",
+    "workflow"
+  ],
+  "submissionNotes": "Synthetic example only; this is not a real submission or published listing."
+}
